@@ -12,3 +12,7 @@ a {
 body {
   font-family: "Palanquin", sans-serif;
 }
+
+.highlight {
+  color: #e76c1f;
+}

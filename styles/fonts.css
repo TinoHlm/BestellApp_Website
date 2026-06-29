@@ -1,3 +1,5 @@
+/* Palanquin family */
+
 @font-face {
   font-family: "Palanquin";
   src: url("../assets/fonts/Palanquin-Thin.ttf") format("truetype");
@@ -54,6 +56,40 @@
   font-display: swap;
 }
 
+/* Palanquin Dark family */
+
+@font-face {
+  font-family: "Palanquin Dark";
+  src: url("../assets/fonts/PalanquinDark-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Palanquin Dark";
+  src: url("../assets/fonts/PalanquinDark-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Palanquin Dark";
+  src: url("../assets/fonts/PalanquinDark-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Palanquin Dark";
+  src: url("../assets/fonts/PalanquinDark-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Utility classes */
 
 .palanquin-thin {
@@ -94,6 +130,30 @@
 
 .palanquin-bold {
   font-family: "Palanquin", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.palanquin-dark-regular {
+  font-family: "Palanquin Dark", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.palanquin-dark-medium {
+  font-family: "Palanquin Dark", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.palanquin-dark-semibold {
+  font-family: "Palanquin Dark", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.palanquin-dark-bold {
+  font-family: "Palanquin Dark", sans-serif;
   font-weight: 700;
   font-style: normal;
 }

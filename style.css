@@ -1,3 +1,4 @@
+/* ===== Header & Header Content ===== */
 header {
   background-color: #e76c1f;
 }
@@ -18,16 +19,49 @@ header {
   cursor: pointer;
 }
 
-.burger-menu{
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
+.burger-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
 }
 
-.burger-menu span{
-    width: 28px;
-    height: 3px;
-    background-color: white;
-    border-radius: 2px;
+.burger-menu span {
+  width: 28px;
+  height: 3px;
+  background-color: white;
+  border-radius: 2px;
+}
+
+/* ===== Hero Section ===== */
+
+#hero-section {
+  height: 500px;
+  width: auto;
+}
+
+#rating-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #facaac;
+  padding: 4px 5px;
+  border-radius: 4px;
+  font-weight: 400;
+}
+
+#star-icon {
+  width: 24px;
+  height: 25px;
+}
+
+#rating-value {
+    font-size: 20px;
+  font-family: "Palanquin Dark", sans-serif;
+  color: #2b2b2b;
+}
+
+.rating-count {
+  color: #726d6d;
+  font-size: 18px;
 }

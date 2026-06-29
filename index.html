@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./styles/assets.css" />
     <title>BurgerHouse</title>
   </head>
-  <body id="home">
+  <body id="home" onload="render()">
     <header>
       <div id="header-content">
         <a href="#home">
@@ -29,18 +29,37 @@
       <section id="hero-section">
         <img id="hero-img" src="./assets/imgs/hero.png" alt="Hero Image" />
         <div class="hero-content">
-          <img id="hero-logo" src="./assets/imgs/logo_burger.png" alt="BurgerHouse Logo" />
+          <img
+            id="hero-logo"
+            src="./assets/imgs/logo_burger.png"
+            alt="BurgerHouse Logo"
+          />
           <div class="product-rating">
-          <h1><span class="highlight">Burger</span>House</h1>
-          <div id="rating-container">
-            <span id="star-icon">★</span>
-            <span id="rating-value">4,1</span>
-            <span id="rating-count">(317)</span>
-          </div>
+            <h1><span class="highlight">Burger</span>House</h1>
+            <div id="rating-container">
+              <span id="star-icon">★</span>
+              <span id="rating-value">4,1</span>
+              <span id="rating-count">(317)</span>
+            </div>
           </div>
           <p>The best of Burgers, Pizza, and Greens, all in one great place.</p>
         </div>
       </section>
+
+      <section id="menu">
+        <div id="menu-content" class="menu-content"></div>
+      </section>
     </main>
+
+    <footer>
+      <div class="footer-content">
+        <p>© 2025 BurgerHouse</p>
+        <a href="#">Imprint</a>
+        <a href="#">Cookie Preferences</a>
+      </div>
+    </footer>
+    <script src="./scripts/db.js"></script>
+    <script src="./scripts/themplate.js"></script>
+    <script src="./script.js"></script>
   </body>
 </html>

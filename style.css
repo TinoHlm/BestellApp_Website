@@ -193,13 +193,13 @@ header {
   border: none;
   padding: 8px 18px;
   border-radius: 20px;
-  transition: all 0.3s ease-in-out 0.2s;
+  transition: all 0.2s ease-in-out;
 }
 
 .add-btn:hover {
   color: var(--color-primary);
   cursor: pointer;
-  transform: scale(1.05); 
+  transform: scale(1.05);
 }
 
 

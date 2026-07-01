@@ -40,5 +40,5 @@ main {
 }
 
 .highlight {
-  color: #e76c1f;
+  color: var(--color-primary);
 }

@@ -9,7 +9,7 @@ function getDishThemplate(item) {
           <span class="dish-price">${formatPrice(item.price)}</span>
         </div>
         <p>${item.description}</p>
-        <button class="add-btn" onclick="addToCart(${item.id})">Add to basket</button>
+        <button class="add-btn ${getCartQuantityById(item.id) > 0 ? "add-btn-added" : ""}" onclick="addToCart(${item.id})">${getAddButtonText(item.id)}</button>
       </div>
     </div>
   `;
@@ -27,4 +27,27 @@ function getCategoryThemplate(category, dishesHtml) {
       <div class="dishes">${dishesHtml}</div>
     </div>
     `;
+}
+function getOrderConfirmationDialogTemplate(dialog) {
+  return `
+    <div class="order-dialog-content" onclick="event.stopPropagation()" tabindex="-1">
+      <button class="order-dialog-close" onclick="${dialog.closeFunction}">&times;</button>
+      <img class="order-dialog-icon" src="${dialog.icon}" alt="${dialog.iconAlt}">
+      <h2>${dialog.title}</h2>
+      <p>${dialog.text}</p>
+    </div>
+  `;
+}
+
+function getRemoveConfirmationDialogTemplate(dialog) {
+  return `
+    <div class="remove-dialog-content" onclick="event.stopPropagation()" tabindex="-1">
+      <h2>${dialog.title}</h2>
+      <p>${dialog.text}</p>
+      <div class="remove-dialog-actions">
+        <button class="remove-dialog-cancel" onclick="${dialog.closeFunction}">${dialog.cancelButton}</button>
+        <button class="remove-dialog-confirm" onclick="${dialog.confirmFunction}">${dialog.confirmButton}</button>
+      </div>
+    </div>
+  `;
 }

@@ -107,3 +107,21 @@ let menu = {
     },
   ],
 };
+
+let dialogDatabase = {
+  orderConfirmation: {
+    icon: "./assets/icons/ordered_icon.png",
+    iconAlt: "Order confirmed",
+    title: "Order confirmed!",
+    text: "Your food is on the way!",
+    closeFunction: "closeOrderConfirmation()",
+  },
+  removeConfirmation: {
+    title: "Remove item?",
+    text: "This is the last one in your basket.",
+    cancelButton: "Keep item",
+    confirmButton: "Remove",
+    closeFunction: "closeRemoveConfirmation()",
+    confirmFunction: "confirmRemoveFromCart()",
+  },
+};

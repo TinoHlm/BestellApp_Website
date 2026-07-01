@@ -8,9 +8,10 @@
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="./styles/fonts.css" />
     <link rel="stylesheet" href="./styles/assets.css" />
+    <link rel="stylesheet" href="./styles/mobile.css" />
     <title>BurgerHouse</title>
   </head>
-  <body id="home" onload="render()">
+  <body id="home" onload="init()">
     <header>
       <div id="header-content">
         <a href="#home">
@@ -62,11 +63,27 @@
     <dialog id="remove-confirmation-dialog" class="remove-dialog" onclick="closeRemoveConfirmation()"></dialog>
     <footer>
       <div class="footer-content">
-        <p>© 2025 BurgerHouse</p>
+        <p>© 2026 BurgerHouse</p>
         <a href="#">Imprint</a>
         <a href="#">Cookie Preferences</a>
       </div>
     </footer>
+
+    <nav class="bottom-nav">
+      <button class="bottom-nav-item" aria-label="Home">
+        <img src="./assets/icons/home_icon.png" alt="Home" />
+      </button>
+      <button class="bottom-nav-item" aria-label="Profile">
+        <img src="./assets/icons/person_icon.png" alt="Profile" />
+      </button>
+      <button class="bottom-nav-item" aria-label="Menu">
+        <img src="./assets/icons/takeout_dining_icon.png" alt="Menu" />
+      </button>
+      <button class="bottom-nav-item" aria-label="Basket" onclick="showCart()">
+        <img src="./assets/icons/shopping_cart_icon.png" alt="Basket" />
+      </button>
+    </nav>
+
     <script src="./scripts/db.js"></script>
     <script src="./scripts/themplate.js"></script>
     <script src="./script.js"></script>

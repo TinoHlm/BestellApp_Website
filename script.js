@@ -2,6 +2,22 @@ let cart = [];
 let isCartVisible = false;
 let itemIdToRemove = null;
 
+function init() {
+  getFromLocalStorage();
+  render();
+}
+
+function saveToLocalStorage() {
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+function getFromLocalStorage() {
+  let storedCart = JSON.parse(localStorage.getItem("cart"));
+  if (storedCart !== null) {
+    cart = storedCart;
+  }
+}
+
 function renderDialogs() {
   let orderDialogRef = document.getElementById("order-confirmation-dialog");
   let removeDialogRef = document.getElementById("remove-confirmation-dialog");
@@ -13,6 +29,7 @@ function renderDialogs() {
     removeDialogRef.innerHTML = getRemoveConfirmationDialogTemplate(dialogDatabase.removeConfirmation);
   }
 }
+
 function render() {
   renderDialogs();
   let contentRef = document.getElementById("menu-content");
@@ -51,6 +68,7 @@ function getAddButtonText(id) {
   }
   return "Add to basket";
 }
+
 function formatPrice(price) {
   return price.toFixed(2).replace(".", ",") + " €";
 }
@@ -67,7 +85,7 @@ function addToCart(id) {
     });
   }
   isCartVisible = true;
-  console.log(cart);
+  saveToLocalStorage();
   render();
 }
 
@@ -82,102 +100,30 @@ function getDishById(id) {
 }
 
 function renderCart() {
-  let cartHTML = "";
   let cartRef = document.getElementById("cart");
+  let cartContentRef = document.getElementById("cart-content");
   cartRef.classList.toggle("cart-visible", isCartVisible);
 
   if (cart.length === 0) {
-    cartHTML = `
-    <div class="cart-empty">
-      <div class="cart-empty-icon">&#128722;</div>
-      <strong>Your basket is empty</strong>
-      <span>Add something tasty from the menu.</span>
-    </div>
-    `;
-
-    let cartContentRef = document.getElementById("cart-content");
-    cartContentRef.innerHTML = cartHTML;
+    cartContentRef.innerHTML = getCartEmptyTemplate();
     return;
   }
 
-  let cartItemsHTML = "";
+  cartContentRef.innerHTML = getCartItemsHTML() + getCartSummaryTemplate();
+}
+
+function getCartItemsHTML() {
+  let itemsHTML = "";
 
   for (let cartItem of cart) {
     let dish = getDishById(cartItem.id);
-    cartItemsHTML += getCartItemThemplate(cartItem, dish);
+    itemsHTML += getCartItemThemplate(cartItem, dish);
   }
 
   let scrollClass = cart.length > 3 ? "cart-items-scroll cart-items-scroll-active" : "cart-items-scroll";
-  cartHTML += `<div class="${scrollClass}">${cartItemsHTML}</div>`;
-  cartHTML += `
-  <div class="cart-summary">
-    <div class="cart-summary-row">
-      <strong>Subtotal</strong>
-      <span>${formatPrice(getCartSubTotal())}</span>
-    </div>
-    <div class="cart-summary-row">
-      <strong>Delivery fee</strong>
-      <span>${formatPrice(menu.deliveryFee)}</span>
-    </div>
-    <hr>
-    <div class="cart-summary-row cart-summary-total">
-      <strong>Total</strong>
-      <span>${formatPrice(getCartTotal())}</span>
-    </div>
-  </div>
-
-  <button class="cart-buy-button" onclick="showOrderConfirmation()">
-  Buy now (${formatPrice(getCartTotal())})
-</button>
-`;
-
-  let cartContentRef = document.getElementById("cart-content");
-  cartContentRef.innerHTML = cartHTML;
+  return `<div class="${scrollClass}">${itemsHTML}</div>`;
 }
 
-function getCartItemThemplate(cartItem, dish) {
-  let label = `<span>${cartItem.quantity} x ${dish.name}</span>`;
-  let price = `<strong>${formatPrice(cartItem.quantity * dish.price)}</strong>`;
-
-  if (cartItem.quantity === 1) {
-    return `
-    <div class="cart-item">
-      <div class="cart-item-top">
-        ${label}
-      </div>
-      <div class="cart-item-bottom">
-        <div class="cart-item-controls">
-          <button class="cart-item-delete" onclick="removeFromCart(${cartItem.id})">
-            <img src="./assets/icons/delete.png" alt="Remove item">
-          </button>
-          <span>${cartItem.quantity}</span>
-          <button class="cart-item-plus" onclick="addToCart(${cartItem.id})">+</button>
-        </div>
-        ${price}
-      </div>
-    </div>
-    `;
-  }
-
-  return `
-    <div class="cart-item">
-      <div class="cart-item-top">
-        ${label}
-        <button class="cart-item-delete-corner" onclick="showRemoveConfirmation(${cartItem.id})">
-          <img src="./assets/icons/delete.png" alt="Remove item">
-        </button>
-      </div>
-      <div class="cart-item-bottom">
-        <div class="cart-item-controls">
-          <button class="cart-item-minus" onclick="removeFromCart(${cartItem.id})">&minus;</button>
-          <span>${cartItem.quantity}</span>
-          <button class="cart-item-plus" onclick="addToCart(${cartItem.id})">+</button>
-        </div>
-        ${price}
-      </div>
-    </div>
-  `;
-}
 function getCartSubTotal() {
   let subTotalCartValue = 0;
 
@@ -197,6 +143,7 @@ function removeFromCart(id) {
 
   if (cartItem.quantity > 1) {
     cartItem.quantity--;
+    saveToLocalStorage();
     render();
   } else {
     showRemoveConfirmation(id);
@@ -223,9 +170,11 @@ function closeRemoveConfirmation() {
 
 function confirmRemoveFromCart() {
   cart = cart.filter((item) => item.id !== itemIdToRemove);
+  saveToLocalStorage();
   closeRemoveConfirmation();
   render();
 }
+
 function showCart() {
   isCartVisible = true;
   renderCart();
@@ -244,6 +193,7 @@ function showOrderConfirmation() {
   dialogRef.classList.add("opened");
   cart = [];
   isCartVisible = false;
+  saveToLocalStorage();
   render();
 
   setTimeout(function () {

@@ -34,7 +34,6 @@ header {
 }
 
 /* ===== Hero Section ===== */
-
 #hero-section {
   margin-bottom: 60px;
 }
@@ -104,10 +103,15 @@ footer {
 
 .footer-content {
   max-width: 1440px;
+  height: 128px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 80px;
   padding: 20px 40px;
+}
+
+.footer-content a{
+  color: white;
 }

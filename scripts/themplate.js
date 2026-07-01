@@ -21,7 +21,7 @@ function getCategoryThemplate(category, dishesHtml) {
 <div class="menu-header">
   <div class="menu-header-content">
     <img src="./assets/imgs/${category.id}.png" alt="${category.name}">
-    <h2>${category.name}</h2>
+    <h2><span class="cat-full">${category.name}</span><span class="cat-short">${category.shortName}</span></h2>
   </div>
 </div>
       <div class="dishes">${dishesHtml}</div>

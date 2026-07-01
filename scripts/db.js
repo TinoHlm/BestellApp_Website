@@ -6,6 +6,7 @@ let menu = {
     {
       id: "burger",
       name: "Burger & Sandwiches",
+      shortName: "Burger",
       items: [
         {
           id: 1,
@@ -40,6 +41,7 @@ let menu = {
     {
       id: "pizza",
       name: "Pizza (30cm)",
+      shortName: "Pizza (30cm)",
       items: [
         {
           id: 5,
@@ -74,6 +76,7 @@ let menu = {
     {
       id: "salad",
       name: "Salad",
+      shortName: "Salad",
       items: [
         {
           id: 9,

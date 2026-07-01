@@ -386,6 +386,7 @@
   position: fixed;
   inset: 0;
   width: fit-content;
+  max-width: calc(100vw - 32px);
   height: fit-content;
   margin: auto;
   border: none;
@@ -399,6 +400,7 @@
 
 .remove-dialog-content {
   width: 320px;
+  max-width: 100%;
   box-sizing: border-box;
   background-color: #363534;
   color: #fdeadc;

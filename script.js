@@ -103,6 +103,7 @@ function renderCart() {
   let cartRef = document.getElementById("cart");
   let cartContentRef = document.getElementById("cart-content");
   cartRef.classList.toggle("cart-visible", isCartVisible);
+  document.body.classList.toggle("cart-open", isCartVisible);
 
   if (cart.length === 0) {
     cartContentRef.innerHTML = getCartEmptyTemplate();

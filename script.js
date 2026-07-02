@@ -1,6 +1,5 @@
 let cart = [];
 let isCartVisible = false;
-let itemIdToRemove = null;
 
 function init() {
   getFromLocalStorage();
@@ -20,13 +19,9 @@ function getFromLocalStorage() {
 
 function renderDialogs() {
   let orderDialogRef = document.getElementById("order-confirmation-dialog");
-  let removeDialogRef = document.getElementById("remove-confirmation-dialog");
 
   if (orderDialogRef.innerHTML === "") {
     orderDialogRef.innerHTML = getOrderConfirmationDialogTemplate(dialogDatabase.orderConfirmation);
-  }
-  if (removeDialogRef.innerHTML === "") {
-    removeDialogRef.innerHTML = getRemoveConfirmationDialogTemplate(dialogDatabase.removeConfirmation);
   }
 }
 
@@ -84,7 +79,6 @@ function addToCart(id) {
       quantity: 1,
     });
   }
-  isCartVisible = true;
   saveToLocalStorage();
   render();
 }
@@ -144,35 +138,16 @@ function removeFromCart(id) {
 
   if (cartItem.quantity > 1) {
     cartItem.quantity--;
-    saveToLocalStorage();
-    render();
   } else {
-    showRemoveConfirmation(id);
+    cart = cart.filter((item) => item.id !== id);
   }
-}
-
-function showRemoveConfirmation(id) {
-  itemIdToRemove = id;
-  let dialogRef = document.getElementById("remove-confirmation-dialog");
-  document.body.classList.add("dialog-open");
-  dialogRef.showModal();
-}
-
-function closeRemoveConfirmation() {
-  let dialogRef = document.getElementById("remove-confirmation-dialog");
-  document.body.classList.remove("dialog-open");
-  itemIdToRemove = null;
-
-  if (!dialogRef.open) {
-    return;
-  }
-  dialogRef.close();
-}
-
-function confirmRemoveFromCart() {
-  cart = cart.filter((item) => item.id !== itemIdToRemove);
   saveToLocalStorage();
-  closeRemoveConfirmation();
+  render();
+}
+
+function deleteFromCart(id) {
+  cart = cart.filter((item) => item.id !== id);
+  saveToLocalStorage();
   render();
 }
 

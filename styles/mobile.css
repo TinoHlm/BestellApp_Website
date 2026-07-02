@@ -6,7 +6,8 @@
   display: none;
 }
 
-@media (max-width: 768px) {
+/* ===== Overlay cart + bottom nav: phone, tablet and narrow desktop (< 1440px) ===== */
+@media (max-width: 1439px) {
   body {
     padding-bottom: 64px;
   }
@@ -15,7 +16,62 @@
     overflow: hidden;
   }
 
-  /* ===== Header ===== */
+  .cart-rail {
+    display: contents;
+  }
+
+  #cart:not(.cart-visible) {
+    display: none;
+  }
+
+  #cart.cart-visible {
+    position: fixed;
+    inset: 0;
+    float: none;
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    margin: 0;
+    transform: none;
+    border-radius: 0;
+    padding: 24px 16px;
+    z-index: 70;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #cart.cart-visible .cart-close-button {
+    display: block;
+  }
+
+  .bottom-nav {
+    display: flex;
+    position: fixed;
+    inset: auto 0 0 0;
+    height: 64px;
+    background-color: #363534;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 60;
+  }
+
+  .bottom-nav-item {
+    border: none;
+    background: transparent;
+    padding: 8px;
+    cursor: pointer;
+  }
+
+  .bottom-nav-item img {
+    display: block;
+    width: 26px;
+    height: 26px;
+  }
+}
+
+/* ===== Phone layout ===== */
+@media (max-width: 768px) {
+  /* Header */
   #header-content {
     height: 64px;
     padding: 0 16px;
@@ -25,17 +81,17 @@
     width: 60px;
   }
 
-  .burger-menu{
+  .burger-menu {
     display: none;
   }
 
-  /* ===== Hero ===== */
+  /* Hero */
   #hero-section {
     margin-bottom: 32px;
     padding: 16px 16px 0;
   }
 
-  #hero-section p{
+  #hero-section p {
     font-weight: bold;
   }
 
@@ -95,7 +151,7 @@
     color: #363534;
   }
 
-  /* ===== Category header ===== */
+  /* Category header */
   .menu-header-content {
     height: auto;
     flex-direction: column;
@@ -115,7 +171,7 @@
     line-height: 120%;
   }
 
-  /* ===== Dishes ===== */
+  /* Dishes */
   #menu-content {
     padding-bottom: 40px;
   }
@@ -141,37 +197,7 @@
     min-height: 0;
   }
 
-  /* ===== Cart -> full-screen overlay ===== */
-  #cart:not(.cart-visible) {
-    display: none;
-  }
-
-  #cart.cart-visible {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    transform: none;
-    border-radius: 0;
-    padding: 24px 16px;
-    z-index: 70;
-  }
-
-  #cart-content {
-    height: auto;
-    min-height: 0;
-    flex: 1;
-  }
-
-  .cart-items-scroll {
-    height: auto;
-    min-height: 0;
-    flex: 1;
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
-
-  /* ===== Footer ===== */
+  /* Footer */
   .footer-content {
     flex-direction: column;
     height: auto;
@@ -185,31 +211,6 @@
 
   .footer-content p {
     order: 2;
-  }
-
-  /* ===== Bottom navigation ===== */
-  .bottom-nav {
-    display: flex;
-    position: fixed;
-    inset: auto 0 0 0;
-    height: 64px;
-    background-color: #363534;
-    justify-content: space-around;
-    align-items: center;
-    z-index: 60;
-  }
-
-  .bottom-nav-item {
-    border: none;
-    background: transparent;
-    padding: 8px;
-    cursor: pointer;
-  }
-
-  .bottom-nav-item img {
-    display: block;
-    width: 26px;
-    height: 26px;
   }
 }
 

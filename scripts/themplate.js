@@ -41,19 +41,6 @@ function getOrderConfirmationDialogTemplate(dialog) {
   `;
 }
 
-function getRemoveConfirmationDialogTemplate(dialog) {
-  return `
-    <div class="remove-dialog-content" onclick="event.stopPropagation()" tabindex="-1">
-      <h2>${dialog.title}</h2>
-      <p>${dialog.text}</p>
-      <div class="remove-dialog-actions">
-        <button class="remove-dialog-cancel" onclick="${dialog.closeFunction}">${dialog.cancelButton}</button>
-        <button class="remove-dialog-confirm" onclick="${dialog.confirmFunction}">${dialog.confirmButton}</button>
-      </div>
-    </div>
-  `;
-}
-
 function getCartItemThemplate(cartItem, dish) {
   if (cartItem.quantity === 1) {
     return getCartItemSingleTemplate(cartItem, dish);
@@ -80,7 +67,7 @@ function getCartItemSingleTemplate(cartItem, dish) {
 function getCartItemMultiTemplate(cartItem, dish) {
   return `
     <div class="cart-item">
-      <div class="cart-item-top"><span>${cartItem.quantity} x ${dish.name}</span><button class="cart-item-delete-corner" onclick="showRemoveConfirmation(${cartItem.id})"><img src="./assets/icons/delete.png" alt="Remove item"></button></div>
+      <div class="cart-item-top"><span>${cartItem.quantity} x ${dish.name}</span><button class="cart-item-delete-corner" onclick="deleteFromCart(${cartItem.id})"><img src="./assets/icons/delete.png" alt="Remove item"></button></div>
       <div class="cart-item-bottom">
         <div class="cart-item-controls">
           <button class="cart-item-minus" onclick="removeFromCart(${cartItem.id})">&minus;</button>

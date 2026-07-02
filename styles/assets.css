@@ -120,52 +120,38 @@
 
 /* ===== Shopping cart ===== */
 
+#menu {
+  position: relative;
+}
+
+.cart-rail {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: max(24px, calc((100vw - var(--max-content-width)) / 2 + 40px));
+  width: 400px;
+  pointer-events: none;
+  
+}
+
 #cart {
-  position: fixed;
-  top: 50%;
-  right: 0;
+  position: sticky;
+  top: 20px;
+  width: 100%;
+  max-height: calc(100vh - 40px);
+  pointer-events: auto;
   z-index: 20;
-  width: 420px;
-  height: 180px;
   box-sizing: border-box;
   background-color: #363534;
   color: white;
-  padding: 60px 28px 32px;
-  border-radius: 30px 0 0 30px;
-  cursor: pointer;
-  transform: translate(364px, -50%);
-  transition: transform 0.35s ease, height 0.35s ease;
-}
-
-#cart.cart-visible {
-  height: 760px;
-  cursor: default;
-  transform: translate(0, -50%);
-}
-
-#cart::before {
-  content: "\2039";
-  position: absolute;
-  top: 50%;
-  left: 17px;
-  transform: translateY(-50%);
-  color: #fdeadc;
-  font-size: 42px;
-  font-weight: 700;
-  line-height: 1;
-}
-
-#cart.cart-visible::before {
-  display: none;
-}
-
-#cart:not(.cart-visible) .cart-close-button,
-#cart:not(.cart-visible) h2,
-#cart:not(.cart-visible) #cart-content {
-  visibility: hidden;
+  padding: 28px 24px;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
 }
 
 .cart-close-button {
+  display: none;
   position: absolute;
   top: 18px;
   right: 22px;
@@ -188,10 +174,12 @@
   font-size: 26px;
   line-height: 120%;
   margin-bottom: 24px;
+  color: #fdeadc;
 }
 
 #cart-content {
-  height: 620px;
+  flex: 1;
+  min-height: 0;
   display: flex;
   flex-direction: column;
 }
@@ -228,8 +216,10 @@
 }
 
 .cart-items-scroll {
-  height: 410px;
-  overflow-y: hidden;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
   padding-right: 8px;
   scrollbar-width: thin;
   scrollbar-color: #facaac transparent;
@@ -379,70 +369,6 @@
 
 .cart-buy-button:hover {
   background-color: #ff7a21;
-}
-
-/* ===== Remove Dialog Section ===== */
-.remove-dialog {
-  position: fixed;
-  inset: 0;
-  width: fit-content;
-  max-width: calc(100vw - 32px);
-  height: fit-content;
-  margin: auto;
-  border: none;
-  padding: 0;
-  background: transparent;
-}
-
-.remove-dialog::backdrop {
-  background-color: rgba(0, 0, 0, 0.45);
-}
-
-.remove-dialog-content {
-  width: 320px;
-  max-width: 100%;
-  box-sizing: border-box;
-  background-color: #363534;
-  color: #fdeadc;
-  border-radius: 18px;
-  padding: 28px 24px 24px;
-  text-align: center;
-}
-
-.remove-dialog-content h2 {
-  font-size: 24px;
-  margin-bottom: 8px;
-}
-
-.remove-dialog-content p {
-  color: #facaac;
-  font-size: 14px;
-  line-height: 130%;
-  margin-bottom: 22px;
-}
-
-.remove-dialog-actions {
-  display: flex;
-  gap: 10px;
-}
-
-.remove-dialog-actions button {
-  flex: 1;
-  border: none;
-  border-radius: 999px;
-  padding: 10px 12px;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.remove-dialog-cancel {
-  background-color: #fdeadc;
-  color: #363534;
-}
-
-.remove-dialog-confirm {
-  background-color: #e76c1f;
-  color: white;
 }
 
 /* ===== Order Dialog Section ===== */

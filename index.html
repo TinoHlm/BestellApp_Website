@@ -48,19 +48,19 @@
       </section>
 
       <section id="menu">
+        <div class="cart-rail">
+          <section id="cart">
+            <button class="cart-close-button" onclick="event.stopPropagation(); hideCart()">&times;</button>
+            <h2>Your Basket</h2>
+            <div id="cart-content" onclick="event.stopPropagation()"></div>
+          </section>
+        </div>
         <div id="menu-content" class="menu-content"></div>
-      </section>
-
-      <section id="cart" onclick="showCart()">
-        <button class="cart-close-button" onclick="event.stopPropagation(); hideCart()">&times;</button>
-        <h2>Your Basket</h2>
-        <div id="cart-content" onclick="event.stopPropagation()"></div>
       </section>
     </main>
 
     <dialog id="order-confirmation-dialog" class="order-dialog" onclick="closeOrderConfirmation()"></dialog>
 
-    <dialog id="remove-confirmation-dialog" class="remove-dialog" onclick="closeRemoveConfirmation()"></dialog>
     <footer>
       <div class="footer-content">
         <p>© 2026 BurgerHouse</p>

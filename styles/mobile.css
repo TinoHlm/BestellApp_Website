@@ -6,8 +6,13 @@
   display: none;
 }
 
-/* ===== Overlay cart + bottom nav: phone, tablet and narrow desktop (< 1440px) ===== */
-@media (max-width: 1439px) {
+@media (min-width: 1025px) and (max-width: 1439px) {
+  .dish {
+    max-width: calc(100% - 480px);
+  }
+}
+
+@media (max-width: 1024px) {
   body {
     padding-bottom: 64px;
   }

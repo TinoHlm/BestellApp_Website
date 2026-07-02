@@ -128,10 +128,9 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  right: max(24px, calc((100vw - var(--max-content-width)) / 2 + 40px));
+  right: max(0px, calc((100vw - var(--max-content-width)) / 2));
   width: 400px;
   pointer-events: none;
-  
 }
 
 #cart {

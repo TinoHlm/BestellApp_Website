@@ -1,4 +1,8 @@
 /* ===== Menu Section ===== */
+#menu {
+  position: relative;
+}
+
 .menu-header {
   background-color: var(--color-primary);
 }
@@ -120,15 +124,11 @@
 
 /* ===== Shopping cart ===== */
 
-#menu {
-  position: relative;
-}
-
 .cart-rail {
   position: absolute;
   top: 0;
   bottom: 0;
-  right: max(0px, calc((100vw - var(--max-content-width)) / 2));
+  right: max(24px, calc((100vw - 1920px) / 2));
   width: 400px;
   pointer-events: none;
 }
@@ -217,7 +217,7 @@
 .cart-items-scroll {
   flex: 1;
   min-height: 0;
-  overflow-y: auto;
+  overflow-y: hidden;
   overflow-x: hidden;
   padding-right: 8px;
   scrollbar-width: thin;
@@ -225,6 +225,7 @@
 }
 
 .cart-items-scroll-active {
+  max-height: 390px;
   overflow-y: auto;
 }
 

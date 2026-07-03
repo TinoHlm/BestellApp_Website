@@ -49,6 +49,19 @@
     display: block;
   }
 
+  #cart.cart-visible #cart-content {
+    flex: 1;
+  }
+
+  #cart.cart-visible .cart-items-scroll-active {
+    max-height: none;
+    flex: 1;
+  }
+
+  #cart.cart-visible .cart-summary {
+    margin-top: 24px;
+  }
+
   .bottom-nav {
     display: flex;
     position: fixed;

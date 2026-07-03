@@ -55,6 +55,21 @@ function getCartQuantityById(id) {
   return 0;
 }
 
+function getCartCount() {
+  let count = 0;
+  for (let cartItem of cart) {
+    count += cartItem.quantity;
+  }
+  return count;
+}
+
+function updateCartBadge() {
+  let badgeRef = document.getElementById("cart-badge");
+  let count = getCartCount();
+  badgeRef.textContent = count;
+  badgeRef.classList.toggle("cart-badge-hidden", count === 0);
+}
+
 function getAddButtonText(id) {
   let quantity = getCartQuantityById(id);
 
@@ -79,8 +94,7 @@ function addToCart(id) {
       quantity: 1,
     });
   }
-  saveToLocalStorage();
-  render();
+  updateCart();
 }
 
 function getDishById(id) {
@@ -93,11 +107,28 @@ function getDishById(id) {
   }
 }
 
+function updateCart() {
+  saveToLocalStorage();
+  updateDishButtons();
+  renderCart();
+}
+
+function updateDishButtons() {
+  for (let category of menu.categories) {
+    for (let item of category.items) {
+      let button = document.getElementById(`add-btn-${item.id}`);
+      button.textContent = getAddButtonText(item.id);
+      button.classList.toggle("add-btn-added", getCartQuantityById(item.id) > 0);
+    }
+  }
+}
+
 function renderCart() {
   let cartRef = document.getElementById("cart");
   let cartContentRef = document.getElementById("cart-content");
   cartRef.classList.toggle("cart-visible", isCartVisible);
   document.body.classList.toggle("cart-open", isCartVisible);
+  updateCartBadge();
 
   if (cart.length === 0) {
     cartContentRef.innerHTML = getCartEmptyTemplate();
@@ -141,14 +172,12 @@ function removeFromCart(id) {
   } else {
     cart = cart.filter((item) => item.id !== id);
   }
-  saveToLocalStorage();
-  render();
+  updateCart();
 }
 
 function deleteFromCart(id) {
   cart = cart.filter((item) => item.id !== id);
-  saveToLocalStorage();
-  render();
+  updateCart();
 }
 
 function showCart() {
@@ -169,8 +198,7 @@ function showOrderConfirmation() {
   dialogRef.classList.add("opened");
   cart = [];
   isCartVisible = false;
-  saveToLocalStorage();
-  render();
+  updateCart();
 
   setTimeout(function () {
     closeOrderConfirmation();

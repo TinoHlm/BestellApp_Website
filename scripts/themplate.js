@@ -9,7 +9,7 @@ function getDishThemplate(item) {
           <span class="dish-price">${formatPrice(item.price)}</span>
         </div>
         <p>${item.description}</p>
-        <button class="add-btn ${getCartQuantityById(item.id) > 0 ? "add-btn-added" : ""}" onclick="addToCart(${item.id})">${getAddButtonText(item.id)}</button>
+        <button id="add-btn-${item.id}" class="add-btn ${getCartQuantityById(item.id) > 0 ? "add-btn-added" : ""}" onclick="addToCart(${item.id})">${getAddButtonText(item.id)}</button>
       </div>
     </div>
   `;

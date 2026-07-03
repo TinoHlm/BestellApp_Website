@@ -1,4 +1,4 @@
-# 🍔 BurgerHouse – Food Ordering App
+# 🍔 BurgerHouse – Food Ordering Webiste
 
 BurgerHouse is a responsive food ordering website for a fictional restaurant.  
 Users can browse a dynamic menu, add dishes to their basket, adjust quantities, and place an order.
